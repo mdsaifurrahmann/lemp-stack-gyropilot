@@ -158,7 +158,7 @@ echo "$BLUE Executing \$$allowUFWHTTP $END";
 
 if command -v ${ufw}
 then
-	echo "$GREEN ${ufw} found on above directory.aheading to next stage! $END \n";
+	echo "$GREEN ${ufw} found on above directory. Aheading to next stage! $END \n";
 	echo "$YELLOW Asking ${ufw} to allow HTTP Requests. $END \n";
 	echo "$BLUE \$${allowUFWHTTP} $END";
 	${allowUFWHTTP}
@@ -378,9 +378,15 @@ echo "$BLUE Executing \$sudo rm -f /etc/nginx/sites-enabled/default $END"
 sudo rm -f /etc/nginx/sites-enabled/default
 echo "$GREEN Done! $END"
 echo "$YELLOW Resolving Nginx index Dir $END"
-sudo mv -f /var/www/html/index.nginx-debian.html /var/www/
-sudo rm -f -r /var/www/html
-echo "$GREEN Done! $END"
+
+if [ -d "var/www/html/"]
+then
+	sudo mv -f /var/www/html/index.nginx-debian.html /var/www/
+	sudo rm -f -r /var/www/html
+	echo "$GREEN Done! $END"
+else
+	echo "$GREEN Already solved before! $END"
+fi
 $s1
 echo
 
@@ -418,8 +424,13 @@ case $ipma in
 
 	N|n)
 		echo "$YELLOW Okay! No problem! Skipping phpMyAdmin and removing preconfigured phpMyAdmin files! $END"
-		sudo rm -f /etc/nginx/conf.d/phpmyadmin.conf
-		echo "$GREEN phpmyadmin.conf file removed $END"
+		if ! [ -d "/usr/share/phpmyadmin/" ]
+		then
+			sudo rm -f /etc/nginx/conf.d/phpmyadmin.conf
+			echo "$GREEN phpmyadmin.conf file removed $END"
+		else
+			echo "$YELLOW phpMyAdmin already installed! $END"
+		fi
 		$s1
 	;;
 
