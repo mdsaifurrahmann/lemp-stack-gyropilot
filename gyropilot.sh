@@ -379,13 +379,13 @@ sudo rm -f /etc/nginx/sites-enabled/default
 echo "$GREEN Done! $END"
 echo "$YELLOW Resolving Nginx index Dir $END"
 
-if [ -d "/var/www/html/" ]
+if ! [ -d "/var/www/html/" ]
 then
+	echo "$GREEN Already solved before! $END"
+else
 	sudo mv -f /var/www/html/index.nginx-debian.html /var/www/
 	sudo rm -f -r /var/www/html
 	echo "$GREEN Done! $END"
-else
-	echo "$GREEN Already solved before! $END"
 fi
 $s1
 echo
