@@ -476,6 +476,7 @@ case $sasab in
 		echo
 		echo "$RED Asking System to enable MariaDB autostart on boot! $END"
 		${enable_mariadb}
+		echo "$GREEN Done! $END"
 		$s2
 	;;
 	N|n)
