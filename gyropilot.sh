@@ -294,7 +294,6 @@ case $phpv in
 		$s1
 		echo "$GREEN Enabling PHP-FPM autostart on boot! $END"
 		${enable_fpm7}
-		${enable_fpm8}
 		echo "$GREEN Done! $END"
 		$s1
 	;;
@@ -455,7 +454,7 @@ case $ipma in
 esac
 
 
-echo "$YELLOW Do you want to AutoStart Nginx, MariaDB, PHP-FPM on boot? $END"
+echo "$YELLOW Do you want to AutoStart Nginx, MariaDB on boot? $END"
 read -p "Press Y to Enable and N or any key to skip. [Y/n]" sasab
 
 case $sasab in
