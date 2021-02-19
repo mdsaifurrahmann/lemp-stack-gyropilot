@@ -379,7 +379,7 @@ sudo rm -f /etc/nginx/sites-enabled/default
 echo "$GREEN Done! $END"
 echo "$YELLOW Resolving Nginx index Dir $END"
 
-if [ -d "var/www/html/"]
+if [ -d "/var/www/html/" ]
 then
 	sudo mv -f /var/www/html/index.nginx-debian.html /var/www/
 	sudo rm -f -r /var/www/html
