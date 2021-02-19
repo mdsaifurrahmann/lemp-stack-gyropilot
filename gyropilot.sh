@@ -367,6 +367,10 @@ echo "$YELLOW Removing /etc/nginx/sites-enabled/default $END"
 echo "$BLUE Executing \$sudo rm -f /etc/nginx/sites-enabled/default $END"
 sudo rm -f /etc/nginx/sites-enabled/default
 echo "$GREEN Done! $END"
+echo "$YELLOW Resolving Nginx index Dir $END"
+sudo mv -f /var/www/html/index.nginx-debian.html /var/www/
+sudo rm -f -r /var/www/html
+echo "$GREEN Done! $END"
 $s1
 echo
 
@@ -389,8 +393,6 @@ case $ipma in
 			echo
 			echo "$YELLOW Creating server block for phpMyAdmin	$END"
 			sudo ln -s /usr/share/phpmyadmin/ /var/www/
-			sudo mv -f /var/www/html/index.nginx-debian.html /var/www/
-			sudo rm -f -r /var/www/html
 			sudo systemctl reload nginx
 			echo "$GREEN Done! $END"
 			$s1
