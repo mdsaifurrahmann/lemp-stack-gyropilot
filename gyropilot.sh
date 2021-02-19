@@ -389,6 +389,8 @@ case $ipma in
 			echo
 			echo "$YELLOW Creating server block for phpMyAdmin	$END"
 			sudo ln -s /usr/share/phpmyadmin/ /var/www/
+			sudo mv -f /var/www/html/index.nginx-debian.html /var/www/
+			sudo rm -f -r /var/www/html
 			sudo systemctl reload nginx
 			echo "$GREEN Done! $END"
 			$s1
