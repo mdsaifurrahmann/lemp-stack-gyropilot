@@ -541,24 +541,24 @@ case $ades in
 		then			
 			if ! command -v curl
 			then
-                echo "$RED CURL is not found. Installing CURL! $END"
+                		echo "$RED CURL is not found. Installing CURL! $END"
 				${pacm} ${yes} install curl
 				echo
 				echo "$RED Adding Node.js v14.x required repo. to souce. $END"
 				$s1
 curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
-            else
-                echo "$YELLOW curl found $END"
-                echo "$RED Adding Node.js v14.x required repo. to source. $END"
-				$s1
+            		else
+               			echo "$YELLOW curl found $END"
+                		echo "$RED Adding Node.js v14.x required repo. to source. $END"
+					$s1
 curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 				echo
-            fi
+            		fi
 			$s1
 			echo "$RED Now Installing Node.js v14.x$END"
 			${pacm} ${yes} install ${nodejs}
 			echo
-			echo "$RED ${nodejs} installation finished.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman	$END"
+			echo "$RED ${nodejs} installation finished.$END"
 		else
 			echo "$RED ${nodejs} is already installed.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman $END"
 		fi
@@ -570,30 +570,33 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 		then		
 			if ! command -v curl
 			then
-                echo "$RED CURL is not found. Installing CURL! $END"
+                		echo "$RED CURL is not found. Installing CURL! $END"
 				${pacm} ${yes} install curl
+				echo "$RED Adding Node.js v14.x required repo. $END"
 curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
-            else
-                echo "$YELLOW curl found $END"
-                echo "$RED Adding Node.js v14.x required repo. $END"
+            		else
+				echo "$YELLOW curl found $END"
+				echo "$RED Adding Node.js v14.x required repo. $END"
 curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
-            fi
+            		fi
 			$s1
 			echo "$RED Now Installing Node.js v14.x$END"
 			${pacm} ${yes} install ${nodejs}
 			echo
-			echo "$RED ${nodejs} installation finished.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman	$END"
+			echo "$RED ${nodejs} installation finished. $END"
 		else
-			echo "$RED ${nodejs} is already installed.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman $END"
+			echo "$RED ${nodejs} is already installed. $END"
 		fi
+		
+		#Composer
 		if ! command -v composer
 		then
 			echo "$RED Installing Composer! $END"
-			php -r "copy('https://getcomposer.org/Gyro pilot', 'composer-setup.php');"
-			php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Gyro pilot verified'; } else { echo 'Gyro pilot corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+			php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+			php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 			sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 			php -r "unlink('composer-setup.php');"
-			echo "$RED composer installation finished.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman	$END"
+			echo "$RED composer installation finished.$END"
 		else
 			echo "$RED composer is already installed.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman $END"
 		fi
@@ -604,8 +607,8 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 		if ! command -v composer
 		then
 			echo "$RED Installing Composer! $END"
- 			php -r "copy('https://getcomposer.org/Gyro pilot', 'composer-setup.php');"
- 			php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Gyro pilot verified'; } else { echo 'Gyro pilot corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+ 			php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+			php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
  			sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
  			php -r "unlink('composer-setup.php');"
 			echo "$RED composer installation finished.	$END"
@@ -617,7 +620,7 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 		if ! command -v laravel
 		then
 			echo "$RED Installing Laravel CLI! $END"
-			composer global require laravel/Gyro pilot
+			composer global require laravel/installer
 printf 'export PATH="~/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
 			echo "$RED Laravel installation finished.$END"
 		else
@@ -625,7 +628,7 @@ printf 'export PATH="~/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
 		fi
 		
 		
-		
+		#VUE
 		if ! command -v vue
 		then
 			if command -v node
@@ -652,13 +655,13 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 				$s1
 				${pacm} ${yes} install ${nodejs}
 				echo
-				echo "$RED ${nodejs} installation finished.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman	$END"
+				echo "$RED ${nodejs} installation finished.	$END"
 				$s1
 				echo "$RED Now Installing Vue Cli $END"
 				$s1
 				sudo npm install -g @vue/cli
 				echo
-				echo "$RED Vue Cli installation finished.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman	$END"
+				echo "$RED Vue Cli installation finished. $END"
 			fi
 		else
 			echo "$YELLOW Operation Complete!\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman$END"
@@ -693,9 +696,9 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 			echo "$RED Now Installing Node.js v14.x$END"
 			$s1
 			${pacm} ${yes} install ${nodejs}
-			echo "$RED ${nodejs} installation finished.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman	$END"
+			echo "$RED ${nodejs} installation finished.$END"
 		else
-			echo "$RED ${nodejs} is already installed.\nThank you for executing LEMP Stack Gyro pilot. Feel Free to Contribute.\nRegards\nMd. Saifur Rahman $END"
+			echo "$RED ${nodejs} is already installed.$END"
 		fi
 
 
@@ -711,8 +714,8 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 		if ! command -v composer
 		then
 			echo "$RED Installing Composer! $END"
-			php -r "copy('https://getcomposer.org/Gyro pilot', 'composer-setup.php');"
-			php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Gyro pilot verified'; } else { echo 'Gyro pilot corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+			php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+			php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 			sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 			php -r "unlink('composer-setup.php');"
 		else
@@ -723,7 +726,7 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 		if ! command -v laravel
 		then
 			echo "$RED Installing Laravel CLI! $END"
-			composer global require laravel/Gyro pilot
+			composer global require laravel/installer
 printf 'export PATH="~/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
 		else
 			echo "$YEELOW Laravel is already installed! $END"
