@@ -292,7 +292,11 @@ case $phpv in
 		echo 
 		echo "$GREEN Success $END"
 		$s1
-
+		echo "$GREEN Enabling PHP-FPM autostart on boot! $END"
+		${enable_fpm7}
+		${enable_fpm8}
+		echo "$GREEN Done! $END"
+		$s1
 	;;
 
 	2) 
@@ -323,7 +327,10 @@ case $phpv in
 		echo 
 		echo "$GREEN Success $END"
 		$s1
-	
+		echo "$GREEN Enabling PHP-FPM autostart on boot! $END"
+		${enable_fpm8}
+		echo "$GREEN Done! $END"
+		$s1
 	;;
 
 	*) 
@@ -352,6 +359,10 @@ case $phpv in
 		wget -O phpmyadmin.conf -P ~/ https://raw.githubusercontent.com/mdsaifurrahmann/lemp-stack-gyropilot/main/php8.0-phpmyadmin.conf
 		sudo mv phpmyadmin.conf /etc/nginx/conf.d/
 		echo 
+		echo "$GREEN Done! $END"
+		$s1
+		echo "$GREEN Enabling PHP-FPM autostart on boot! $END"
+		${enable_fpm8}
 		echo "$GREEN Done! $END"
 		$s1
 	;;
@@ -449,19 +460,13 @@ read -p "Press Y to Enable and N or any key to skip. [Y/n]" sasab
 
 case $sasab in
 	Y|y)
-		${enable_nginx}
 		echo "$RED Asking System to enable Nginx autostart on boot! $END"
+		${enable_nginx}
 		$s2
 		echo
-		${enable_mariadb}
 		echo "$RED Asking System to enable MariaDB autostart on boot! $END"
+		${enable_mariadb}
 		$s2
-		echo
-		${enable_fpm7}
-		${enable_fpm8}
-		echo "$RED Asking System to enable PHP-FPM autostart on boot! $END"
-		$s2
-		echo
 	;;
 	N|n)
 		echo "$RED No Problem! Skipping autostart module & We're going ahead. $END"
