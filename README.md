@@ -16,4 +16,8 @@ For Debian/Ubuntu based distro:
 ```
 sudo apt-get install wget
 ```
+
+You can also download the zip file from `Code` section or `release` section and extract them to Home directory. Then make `gyropilot.sh` executable by running `chmod +x gyropilot.sh` and execute `gyropilot.sh` on terminal by running `sh gyropilot.sh`.
+Boom! all done! Pilot will make you fly soon! :p
+
 >If you face any problem to use this command then please let me know. I'll help you if there any unknown error appeared!
